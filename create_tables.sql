@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `publishers` (
 CREATE TABLE IF NOT EXISTS `books` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255),
+    `genre_id` INT UNSIGNED NOT NULL,
     `description` TEXT,
     `publisher_id` INT UNSIGNED NOT NULL,
     `publish_date` DATE NOT NULL,
@@ -32,7 +33,16 @@ CREATE TABLE IF NOT EXISTS `books` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`id`),
     FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`),
+    FOREIGN KEY (`genre_id`) REFERENCES `book_genres` (`id`),
     UNIQUE (`EAN_UPC`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `book_genres` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255),
+    PRIMARY KEY(`id`),
+    UNIQUE (`name`)
 );
 
 
