@@ -195,10 +195,10 @@ INSERT `clients` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES
 INSERT `orders` (`id`, `client_id`, `status_id`) VALUES
 (1, 4, 2),
 (2, 5, 7),
-(3, 5, 6),
+(3, 5, 1),
 (4, 5, 2),
 (5, 1, 6),
-(6, 9, 4),
+(6, 9, 1),
 (7, 6, 1),
 (8, 8, 5),
 (9, 8, 6),
