@@ -1,4 +1,4 @@
-INSERT `publisher_location` (,`id`, `city`, `region`, `country`) VALUES
+INSERT `publisher_location` (`id`, `city`, `region`, `country`) VALUES
 (1, 'New York', 'New York', 'the USA'),
 (2, 'London', 'London', 'the United Kingdom'),
 (3, 'Madrid', 'Madrid', 'Spain'),

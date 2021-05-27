@@ -15,7 +15,7 @@ INSERT `publishers` (`id`, `name`, `location_id`) VALUES
 (11, 'Routledge', 7);
 
 
-INSERT `books` (`id`, `title`,  `description`) VALUES
+INSERT `books` (`id`, `title`, `description`) VALUES
 (
     1,
     'Sometimes I Trip on How Happy We Could Be', 
@@ -43,7 +43,7 @@ INSERT `books` (`id`, `title`,  `description`) VALUES
 (
     4,
     '1984',
-    "1984 has come and gone, but George Orwell's prophetic, nightmare vision in 1949 of the world we were becoming is timelier than ever. "1984" is still the great modern classic "negative Utopia" - a startling original and haunting novel that creates an imaginary world that is completely convincing from the first sentence to the last four words. No one can deny this novel's power, its hold on the imagination of whole generations, or the power of its admonitions - a power that seems to grow, not lessen, with the passage of time."
+    "1984 has come and gone, but George Orwell's prophetic, nightmare vision in 1949 of the world we were becoming is timelier than ever. \"1984\" is still the great modern classic \"negative Utopia\" - a startling original and haunting novel that creates an imaginary world that is completely convincing from the first sentence to the last four words. No one can deny this novel's power, its hold on the imagination of whole generations, or the power of its admonitions - a power that seems to grow, not lessen, with the passage of time."
 ),
 
 (
@@ -102,13 +102,14 @@ With extraordinary imaginative power, King weaves the social, political and popu
 (
     11,
     'Revival: Little Golden America (1944)',
-    "Odnoetazhnya Amerika (One-Storied America) First published in the U.S.S.R. 1936. Little Golden America. First published in England in 1944. Translated from the Russian by Charles Malamuth This is one of the most popular books ever published in the Soviet Union. It remains popular in Russia today. We Americans cannot figure out what makes it so popular. It is a good book, interesting and well written, but does not contain anything so outstanding as to make it the most popular book ever written. Yet almost every Russian seems to have read or to be familiar with "Little Golden America". It describes the adventures of the two authors, who arrived in New York City on the passenger ship Normandie. After one month in New York, they bought a car and started traveling around the United States. They went to Chicago and San Francisco and then swept back through the Southern States. When they arrived back in New York to return to Europe, they said that they had traveled ten thousand miles."
+    "Odnoetazhnya Amerika (One-Storied America) First published in the U.S.S.R. 1936. Little Golden America. First published in England in 1944. Translated from the Russian by Charles Malamuth This is one of the most popular books ever published in the Soviet Union. It remains popular in Russia today. We Americans cannot figure out what makes it so popular. It is a good book, interesting and well written, but does not contain anything so outstanding as to make it the most popular book ever written. Yet almost every Russian seems to have read or to be familiar with \"Little Golden America\". It describes the adventures of the two authors, who arrived in New York City on the passenger ship Normandie. After one month in New York, they bought a car and started traveling around the United States. They went to Chicago and San Francisco and then swept back through the Southern States. When they arrived back in New York to return to Europe, they said that they had traveled ten thousand miles."
 );
 
 
 
 -- Book detail insertion
-INSERT `books` (`book_id`, 
+INSERT `book_details` (
+                `book_id`, 
                 `publisher_id`, 
                 `publish_date`, 
                 `language_id`, 
