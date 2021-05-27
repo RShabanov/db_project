@@ -80,18 +80,17 @@ CREATE TABLE IF NOT EXISTS `book_details` (
 );
 
 
-CREATE TABLE IF NOT EXISTS `categories` (
+CREATE TABLE IF NOT EXISTS `bisac_categories` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) NOT NULL,
+    `code` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
-    UNIQUE (`name`)
+    UNIQUE (`code`)
 );
 
 
 CREATE TABLE IF NOT EXISTS `authors` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `firstname` VARCHAR(255) NOT NULL,
-    `middlename` VARCHAR(255) NOT NULL DEFAULT '',
     `lastname` VARCHAR(255) NOT NULL,
     `about` TEXT,
     PRIMARY KEY (`id`)
@@ -106,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `categories_for_book` (
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     FOREIGN KEY (`category_id`) 
-        REFERENCES `categories` (`id`)
+        REFERENCES `bisac_categories` (`id`)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     CONSTRAINT `unique_category` UNIQUE (`book_id`, `category_id`)
@@ -128,23 +127,7 @@ CREATE TABLE IF NOT EXISTS `book_authors` (
 );
 
 
-CREATE TABLE IF NOT EXISTS `orders` (
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
-    `customer_id` INT UNSIGNED NOT NULL,
-    `status_id` INT UNSIGNED NOT NULL,
-    PRIMARY KEY (`id`),
-    FOREIGN KEY (`customer_id`) 
-        REFERENCES `customers` (`id`)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE,
-    FOREIGN KEY (`status_id`)
-        REFERENCES `order_statuses` (`id`)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE
-);
-
-
-CREATE TABLE IF NOT EXISTS `customers` (
+CREATE TABLE IF NOT EXISTS `clients` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
     `firstname` VARCHAR(255) NOT NULL,
     `lastname` VARCHAR(255) NOT NULL,
@@ -152,6 +135,22 @@ CREATE TABLE IF NOT EXISTS `customers` (
     `phone` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE (`phone`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `orders` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
+    `client_id` INT UNSIGNED NOT NULL,
+    `status_id` INT UNSIGNED NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`client_id`) 
+        REFERENCES `clients` (`id`)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    FOREIGN KEY (`status_id`)
+        REFERENCES `order_statuses` (`id`)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
 );
 
 
