@@ -103,7 +103,13 @@ With extraordinary imaginative power, King weaves the social, political and popu
     11,
     'Revival: Little Golden America (1944)',
     "Odnoetazhnya Amerika (One-Storied America) First published in the U.S.S.R. 1936. Little Golden America. First published in England in 1944. Translated from the Russian by Charles Malamuth This is one of the most popular books ever published in the Soviet Union. It remains popular in Russia today. We Americans cannot figure out what makes it so popular. It is a good book, interesting and well written, but does not contain anything so outstanding as to make it the most popular book ever written. Yet almost every Russian seems to have read or to be familiar with \"Little Golden America\". It describes the adventures of the two authors, who arrived in New York City on the passenger ship Normandie. After one month in New York, they bought a car and started traveling around the United States. They went to Chicago and San Francisco and then swept back through the Southern States. When they arrived back in New York to return to Europe, they said that they had traveled ten thousand miles."
-);
+),
+
+(
+    12, 
+    'The Stupidity of War: American Foreign Policy and the Case for Complacency', 
+    "It could be said that American foreign policy since 1945 has been one long miscue; most international threats - including during the Cold War - have been substantially exaggerated. The result has been agony and bloviation, unnecessary and costly military interventions that have mostly failed. A policy of complacency and appeasement likely would have worked better. In this highly readable book, John Mueller argues with wisdom and wit rather than ideology and hyperbole that aversion to international war has had considerable consequences. There has seldom been significant danger of major war. Nuclear weapons, international institutions, and America\'s super power role have been substantially irrelevant; post-Cold War policy has been animated more by vast proclamation and half-vast execution than by the appeals of liberal hegemony; and post-9/11 concerns about international terrorism and nuclear proliferation have been overwrought and often destructive. Meanwhile, threats from Russia, China, Iran, and North Korea, or from cyber technology are limited and manageable. Unlikely to charm Washington, Mueller explains how, when international war is in decline, complacency and appeasement become viable diplomatic devices and a large military is scarcely required.");
+;
 
 
 
@@ -134,7 +140,8 @@ INSERT `book_details` (
 ( 10, 10, DATE('2012-06-05'), 1, 'paperback', 35.50, 4, 9781444727333 ),
 ( 10, 10, DATE('2011-11-08'), 1, 'hardcover', 75.00, 4, 9781444744576 ),
 ( 11, 11, DATE('2019-02-02'), 8, 'paperback', 71.94, 5, 9781138567511 ),
-( 11, 11, DATE('2018-01-24'), 8, 'hardcover', 264.00, 5, 9781138556805 ); 
+( 11, 11, DATE('2018-01-24'), 8, 'hardcover', 264.00, 5, 9781138556805 ),
+( 12, 3, DATE('2021-03-04'), 1, 'hardcover', 27.95, 4, 9781108843836); 
 
 
 INSERT `categories_for_book` (`book_id`, `category_id`) VALUES
@@ -160,7 +167,8 @@ INSERT `categories_for_book` (`book_id`, `category_id`) VALUES
 (9, 1100),
 (9, 1188),
 (10, 63),
-(11, 1438);
+(11, 1438),
+(12, 2967);
 
 
 INSERT `book_authors` (`book_id`, `author_id`) VALUES
@@ -176,7 +184,8 @@ INSERT `book_authors` (`book_id`, `author_id`) VALUES
 (9, 10),
 (10, 11),
 (11, 12),
-(11, 13);
+(11, 13),
+(12, 7);
 
 
 INSERT `clients` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES
@@ -233,3 +242,5 @@ INSERT `shopping_cart` (`order_id`, `book_id`, `quantity`) VALUES
 (9, 5, 3),
 (9, 8, 1),
 (10, 7, 3);
+
+

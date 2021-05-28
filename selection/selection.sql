@@ -28,12 +28,15 @@ WHERE
 GROUP BY `cb`.`book_id`;
 
 
-CREATE VIEW `books_by_authors` AS
-SELECT
+-- List of books by authors
+SELECT 
+`t`.`authors` AS `authors`,
+GROUP_CONCAT(`t`.`books` SEPARATOR ' | ') AS `books`
+FROM
+(SELECT
     `authors`.`id` AS `id`,
     GROUP_CONCAT(CONCAT_WS(' ', `authors`.`firstname`, `authors`.`lastname`) SEPARATOR ' & ') AS `authors`,
-    GROUP_CONCAT(`books`.`title` SEPARATOR ', ') AS `books`,
-    `authors`.`about` AS `about`
+    `books`.`title` AS `books`
 FROM
     `book_authors`,
     `authors`,
@@ -41,20 +44,8 @@ FROM
 WHERE
     `book_authors`.`book_id` = `books`.`id` AND
     `book_authors`.`author_id` = `authors`.`id`
-GROUP BY `book_authors`.`book_id`;
-
-
-SELECT
-    `books`.`title` AS `books`,
-    GROUP_CONCAT(CONCAT_WS(' ', `authors`.`firstname`, `authors`.`lastname`) SEPARATOR ' & ') AS `authors`,
-FROM
-    `books`,
-    `authors`
-    `book_authors`
-WHERE
-    `book_authors`.`book_id` = `books`.`id` AND
-    `book_authors`.`author_id` = `authors`.`id`;
-
+GROUP BY `book_authors`.`book_id`) AS `t`
+GROUP BY `t`.`authors`;
 
 
 -- List of all books with details
@@ -69,7 +60,8 @@ CREATE VIEW `book_info` (
     `cover`,
     `rate`,
     `EAN/UPC`,
-    `BISAC categories`
+    `BISAC categories`,
+    `description`
 ) AS 
 SELECT 
     `books`.`id`, 
@@ -95,5 +87,50 @@ WHERE
     `book_details`.`publisher_id` = `publishers_info`.`id` AND
     `book_details`.`language_id` = `languages`.`id` AND
     `books`.`id` = `bisac_codes`.`book_id`
-GROUP BY `books`.`title`
-LIMIT 1;
+GROUP BY `books`.`title`;
+
+
+-- List of books by BISAC categories
+CREATE VIEW `books_by_bisac` As
+SELECT 
+    `bisac_categories`.`code` AS `BISAC category`,
+    GROUP_CONCAT(`books`.`title` SEPARATOR ' | ') AS `books`
+FROM 
+    `categories_for_book`,
+    `bisac_categories`,
+    `books`
+WHERE
+    `categories_for_book`.`book_id` = `books`.`id` AND
+    `categories_for_book`.`category_id` = `bisac_categories`.`id`
+GROUP BY `categories_for_book`.`category_id`;
+
+
+-- List of orders with info
+SELECT
+    `shopping_cart`.`order_id`,
+    `client_order`.`client_name`,
+    `client_order`.`phone`,
+    `client_order`.`order_status`,
+    GROUP_CONCAT(`books`.`title` SEPARATOR '; ') AS `shopping_cart`
+FROM
+    `shopping_cart`,
+    (
+        SELECT
+            `orders`.`id`,
+            CONCAT_WS(' ', `clients`.`firstname`, `clients`.`lastname`) AS `client_name`,
+            `clients`.`phone` AS `phone`,
+            `order_statuses`.`name` AS `order_status`
+        FROM
+            `orders`,
+            `clients`,
+            `order_statuses`
+        WHERE
+            `orders`.`client_id` = `clients`.`id` AND
+            `orders`.`status_id` = `order_statuses`.`id`
+        GROUP BY `orders`.`id`
+    ) AS `client_order`,
+    `books`
+WHERE 
+`shopping_cart`.`order_id` = `client_order`.`id` AND
+`shopping_cart`.`book_id` = `books`.`id`
+GROUP BY `shopping_cart`.`order_id`;
