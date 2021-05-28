@@ -5,7 +5,7 @@
 
 <section>
     <table>
-        <caption><h2>Таблицы и их описание<h2></caption>
+        <caption><b>Таблицы и их описание</b></caption>
         <tr>
             <td>Название таблицы</td>
             <td>Описание таблицы</td>
@@ -67,7 +67,7 @@
 
 <section>
     <table>
-        <caption><h2>Представления и их описания<h2></caption>
+        <caption><b>Представления и их описания</b></caption>
         <tr>
             <td>Название таблицы</td>
             <td>Описание таблицы</td>
