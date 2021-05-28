@@ -5,7 +5,7 @@
 
 <section>
     <table>
-        <caption>Таблицы и их описание</caption>
+        <caption><h2>Таблицы и их описание<h2></caption>
         <tr>
             <td>Название таблицы</td>
             <td>Описание таблицы</td>
@@ -61,6 +61,32 @@
         <tr>
             <td>order_statuses</td>
             <td>Информация о статусах заказа</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <table>
+        <caption><h2>Представления и их описания<h2></caption>
+        <tr>
+            <td>Название таблицы</td>
+            <td>Описание таблицы</td>
+        </tr>
+        <tr>
+            <td>publisher_info</td>
+            <td>Список всех издательств с их местоположением</td>
+        </tr>
+        <tr>
+            <td>bisac_codes</td>
+            <td>Список всех BISAC кодов</td>
+        </tr>
+        <tr>
+            <td>book_info</td>
+            <td>Список всех книг со всей информацией</td>
+        </tr>
+        <tr>
+            <td>books_by_bisac</td>
+            <td>Список книг сгруппированных по BISAC категориям</td>
         </tr>
     </table>
 </section>
